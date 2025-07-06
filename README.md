@@ -1,6 +1,6 @@
 # Space-Invaders-Clone
 
-A retro style Space Invaders game coded in C for the *CSE115* course. Game based on command-line interface 
+A retro style Space Invaders game coded in C for the *CSE115* course. Game based on command-line interface.
 
 ## About
 
