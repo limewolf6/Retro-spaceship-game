@@ -1,6 +1,18 @@
-**Space-Invaders-Clone:** 
-A space invaders game where players control spaceship and shoot down invading alien spaceships.
+# Space-Invaders-Clone:
 
+A retro style Space Invaders game coded in C for the *CSE115* course. Game based on command-line interface 
+
+## About
+
+- **Course:** CSE115 (Programming Language I)
+- **Semester:** Summer 2025
+- **Instructor:** Mohammad Shifat-E-Rabbi
+- **Group:** 8
+- **Members:**
+  - 2521985042 - Radit Rifah Rahman **(Lead)**
+  - 2522096642 - Afrida Hossain Khan
+  - 2524611042 - Seendeed Islam
+ 
 
 **Features**
 
