@@ -1,1 +1,14 @@
+Tools: 
 
+codeblocks
+GCC
+glib
+make
+
+Libraries:
+
+C standard library
+MinGW
+      
+
+  
