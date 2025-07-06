@@ -1,6 +1,6 @@
 # Space-Invaders-Clone
 
-A retro style Space Invaders game coded in C for the *CSE115* course. Game based on command-line interface.
+A retro style Space Invaders game coded in C for the *CSE115* course project consisting of command-line interface.
 
 ## About
 
@@ -16,9 +16,9 @@ A retro style Space Invaders game coded in C for the *CSE115* course. Game based
  
 ## Features
 
-  - Classic space shooter gameplay
-  - Score tracking system
-  - Retro-style graphics
+  - Classic space shooter gameplay.
+  - Score tracking system.
+  - Retro-style graphics.
 
 ## Interface 
   - A menu appears to select a choice.
@@ -31,7 +31,7 @@ A retro style Space Invaders game coded in C for the *CSE115* course. Game based
 
 ## Game Logic
    
- - **Player spaceship:** Controlled with A/D keys, fires with space.
+ - **Player spaceship:** Controlled with A and D keys, fires with spacebar.
  - **Aliens:** Stay static in 15 x 2 grid at the top of the console.
  - **Bullets:** Lasers sent towards alien ships by one press/click at a time.
- - **Destruction:** Lasers hits alien spaceships and is destroyed.  
+ - **Destruction:** Lasers hits alien spaceships and they gets destroyed.  
