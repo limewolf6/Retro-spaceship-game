@@ -1,14 +1,10 @@
 Tools: 
-
-codeblocks
-GCC
-glib
-make
+      - No extra tools used besides CodeBlocks.
+      - C Compiler (e.g., GCC, MinGW)
+      - Make utility (for using the provided Makefile)
 
 Libraries:
-
-C standard library
-MinGW
+      - No external C libraries required (uses standard C library only).
       
 
   
