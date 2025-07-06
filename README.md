@@ -23,4 +23,4 @@ Retro-style graphics and sound effects
   
   Bullets: Shoots Lasers one press/click at a time.
   
-  Destruction: Lasers hit aliens and exact area marked by a cross (X).
+  Destruction: Lasers hit aliens and gets removed
