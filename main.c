@@ -130,7 +130,7 @@ int main() {
         else if(a == 3){
             printf("This is a CLI based game made by Group 8 for CSE115.4\n\n");
             printf("Instructor: Mohammad Shifat-E-Rabbi\n\nGroup 8 Members\n 1.Radit Rifah Rahman\n 2.Seendeed Islam\n 3.Afrida Hossain Khan\n\n");
-            printf("Github Repository Link: https://github.com/limewolf6/Retro-spaceship-game-CSE-grp-8\n\n");
+            printf("Github Repository Link: https://github.com/limewolf6/Retro-spaceship-game\n\n");
             continue;
         }
         else if(a == 4){
