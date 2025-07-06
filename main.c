@@ -4,39 +4,39 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define ROWS 20
-#define COLS 40
-#define PLAYER '^'
-#define ENEMY 'M'
-#define BULLET '.'
-#define EMPTY ' '
+#define Rows 20
+#define Colm 40
+#define Player '^'
+#define Invader 'M'
+#define Bullet '.'
+#define Empty ' '
 
-char grid[ROWS][COLS];
-int playerPos = COLS / 2;
+char grid[Rows][Colm];
+int playerPos = Colm / 2;
 int score = 0;
 int gameOver = 0;
 
 void initGrid(){
-    for (int i = 0; i < ROWS; i++){
-        for (int j = 0; j < COLS; j++){
-            grid[i][j] = EMPTY;
+    for (int i = 0; i < Rows; i++){
+        for (int j = 0; j < Colm; j++){
+            grid[i][j] = Empty;
         }
     }
 
     for (int i = 0; i < 2; i++){
-        for (int j = 5; j < COLS - 5; j += 2){
-            grid[i][j] = ENEMY;
+        for (int j = 5; j < Colm - 5; j += 2){
+            grid[i][j] = Invader;
         }
     }
 
-    grid[ROWS - 1][playerPos] = PLAYER;
+    grid[Rows - 1][playerPos] = Player;
 }
 
 void drawGrid(){
     system("cls");
     printf("Score: %d\n", score);
-    for (int i = 0; i < ROWS; i++){
-        for (int j = 0; j < COLS; j++){
+    for (int i = 0; i < Rows; i++){
+        for (int j = 0; j < Colm; j++){
             printf("%c", grid[i][j]);
         }
         printf("\n");
@@ -44,43 +44,43 @@ void drawGrid(){
 }
 
 void movePlayer(char key){
-    grid[ROWS - 1][playerPos] = EMPTY;
+    grid[Rows - 1][playerPos] = Empty;
 
     if (key == 'a' && playerPos > 0)
         playerPos--;
-    else if (key == 'd' && playerPos < COLS - 1)
+    else if (key == 'd' && playerPos < Colm - 1)
         playerPos++;
     else if (key == ' ')
-        grid[ROWS - 2][playerPos] = BULLET;
+        grid[Rows - 2][playerPos] = Bullet;
 
-    grid[ROWS - 1][playerPos] = PLAYER;
+    grid[Rows - 1][playerPos] = Player;
 }
 
 void updateBullets(){
-    for (int i = 0; i < ROWS; i++) {
-        for (int j = 0; j < COLS; j++){
-            if (grid[i][j] == BULLET){
+    for (int i = 0; i < Rows; i++) {
+        for (int j = 0; j < Colm; j++){
+            if (grid[i][j] == Bullet){
                 // If bullet is at the top row, remove it (missed)
                 if (i == 0){
-                    grid[i][j] = EMPTY;
+                    grid[i][j] = Empty;
                     continue;
                 }
 
                 // Check if bullet hit an enemy
-                if (grid[i - 1][j] == ENEMY){
-                    grid[i - 1][j] = EMPTY;  // Delete enemy
-                    grid[i][j] = EMPTY;      // Delete bullet
+                if (grid[i - 1][j] == Invader){
+                    grid[i - 1][j] = Empty;  // Delete enemy
+                    grid[i][j] = Empty;      // Delete bullet
                     score += 10;
                     Beep(700, 50);
                 }
                 // Move bullet upward if space is empty
-                else if (grid[i - 1][j] == EMPTY){
-                    grid[i - 1][j] = BULLET;
-                    grid[i][j] = EMPTY;
+                else if (grid[i - 1][j] == Empty){
+                    grid[i - 1][j] = Bullet;
+                    grid[i][j] = Empty;
                 }
                 // If bullet hits anything else (like a wall), delete it
                 else{
-                    grid[i][j] = EMPTY;
+                    grid[i][j] = Empty;
                 }
             }
         }
@@ -88,9 +88,9 @@ void updateBullets(){
 }
 
 int enemiesLeft() {
-    for (int i = 0; i < ROWS; i++)
-        for (int j = 0; j < COLS; j++)
-            if (grid[i][j] == ENEMY)
+    for (int i = 0; i < Rows; i++)
+        for (int j = 0; j < Colm; j++)
+            if (grid[i][j] == Invader)
                 return 1;
     return 0;
 }
@@ -144,4 +144,3 @@ int main() {
     }
     return 0;
 }
-
