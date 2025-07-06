@@ -99,7 +99,7 @@ int main() {
     printf("Welcome to Space Invaders\n");
     while(1){
         int a;
-        printf("1. Play\n2. Controls\n3. About Us\n4. Exit\n");
+        printf("1. Play\n2. Controls\n3. About\n4. Exit\n");
         scanf("%d",&a);
 
         if(a == 1){
