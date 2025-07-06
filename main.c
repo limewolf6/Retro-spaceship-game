@@ -85,7 +85,7 @@ void updateBullets(){
         }
     }
 }
-//checks for in
+//checks for invaders
 int invadersLeft() {
     for (int i = 0; i < Rows; i++)
         for (int j = 0; j < Colm; j++)
