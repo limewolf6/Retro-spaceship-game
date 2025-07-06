@@ -17,24 +17,24 @@ int score = 0;
 int gameOver = 0;
 
 void initGrid(){
-    for (int i = 0; i < Rows; i++){
+    for (int i = 0; i < Rows; i++){  //for cleaning grid
         for (int j = 0; j < Colm; j++){
             grid[i][j] = Empty;
         }
     }
 
-    for (int i = 0; i < 2; i++){
+    for (int i = 0; i < 2; i++){  //for placing invaders
         for (int j = 5; j < Colm - 5; j += 2){
             grid[i][j] = Invader;
         }
     }
 
-    grid[Rows - 1][playerPos] = Player;
+    grid[Rows - 1][playerPos] = Player;  //for placing player
 }
 
 void drawGrid(){
     system("cls");
-    printf("Score: %d\n", score);
+    printf("Score: %d\n", score);  //gives score
     for (int i = 0; i < Rows; i++){
         for (int j = 0; j < Colm; j++){
             printf("%c", grid[i][j]);
@@ -42,7 +42,7 @@ void drawGrid(){
         printf("\n");
     }
 }
-
+//player controls
 void movePlayer(char key){
     grid[Rows - 1][playerPos] = Empty;
 
@@ -59,8 +59,7 @@ void movePlayer(char key){
 void updateBullets(){
     for (int i = 0; i < Rows; i++) {
         for (int j = 0; j < Colm; j++){
-            if (grid[i][j] == Bullet){
-                // If bullet is at the top row, remove it (missed)
+            if (grid[i][j] == Bullet){  // If bullet is at the top row, remove it (missed)
                 if (i == 0){
                     grid[i][j] = Empty;
                     continue;
@@ -86,8 +85,8 @@ void updateBullets(){
         }
     }
 }
-
-int enemiesLeft() {
+//checks for in
+int invadersLeft() {
     for (int i = 0; i < Rows; i++)
         for (int j = 0; j < Colm; j++)
             if (grid[i][j] == Invader)
@@ -117,7 +116,7 @@ int main() {
                 updateBullets();
                 drawGrid();
 
-                if (!enemiesLeft()){
+                if (!invadersLeft()){
                     printf("\nYou WIN! Final Score: %d\n", score);
                     gameOver = 1;
                 }
