@@ -31,7 +31,7 @@ A retro style Space Invaders game coded in C for the *CSE115* course. Game based
 
 ## Game Logic
    
- - Player spaceship: Controlled with A/D keys, fires with space.
- - Aliens: Stay static in 15 x 2 grid at the top of the console.
- - Bullets: Lasers sent towards alien ships by one press/click at a time.
- - Destruction: Lasers hits alien spaceships and is destroyed.  
+ - **Player spaceship:** Controlled with A/D keys, fires with space.
+ - **Aliens:** Stay static in 15 x 2 grid at the top of the console.
+ - **Bullets:** Lasers sent towards alien ships by one press/click at a time.
+ - **Destruction:** Lasers hits alien spaceships and is destroyed.  
