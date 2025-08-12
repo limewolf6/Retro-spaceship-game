@@ -6,10 +6,14 @@
 
 #define Rows 20
 #define Colm 40
-#define Player '^'
+#define Player 'A'
 #define Invader 'M'
 #define Bullet '.'
 #define Empty ' '
+
+int invaderDirection = 1; // 1 for right, -1 for left
+int moveCounter = 0;      // Control speed of invader movement
+int moveThreshold = 3;   // Adjust for speed — higher = slower
 
 char grid[Rows][Colm];
 int playerPos = Colm / 2;
@@ -85,6 +89,68 @@ void updateBullets(){
         }
     }
 }
+
+void updateInvaders(){
+    moveCounter++;
+    if (moveCounter < moveThreshold) return; // Move only every few cycles
+    moveCounter = 0;
+
+    int shiftDown = 0;
+
+    // Check if invaders hit wall
+    for (int i = 0; i < Rows; i++) {
+        for (int j = 0; j < Colm; j++) {
+            if (grid[i][j] == Invader) {
+                if ((invaderDirection == 1 && j == Colm - 1) ||
+                    (invaderDirection == -1 && j == 0)) {
+                    invaderDirection *= -1; // Change direction
+                    shiftDown = 1;
+                    break;
+                }
+            }
+        }
+        if (shiftDown) break;
+    }
+
+    // Move invaders
+    if (shiftDown) {
+        for (int i = Rows - 2; i >= 0; i--) {
+            for (int j = 0; j < Colm; j++) {
+                if (grid[i][j] == Invader) {
+                    grid[i][j] = Empty;
+                    if (i + 1 == Rows - 1) {
+                        // Invader reached player row
+                        gameOver = 1;
+                        return;
+                    }
+                    grid[i + 1][j] = Invader;
+                }
+            }
+        }
+    } else {
+        // Horizontal move
+        if (invaderDirection == 1) {
+            for (int i = Rows - 1; i >= 0; i--) {
+                for (int j = Colm - 2; j >= 0; j--) {
+                    if (grid[i][j] == Invader) {
+                        grid[i][j] = Empty;
+                        grid[i][j + 1] = Invader;
+                    }
+                }
+            }
+        } else {
+            for (int i = Rows - 1; i >= 0; i--) {
+                for (int j = 1; j < Colm; j++) {
+                    if (grid[i][j] == Invader) {
+                        grid[i][j] = Empty;
+                        grid[i][j - 1] = Invader;
+                    }
+                }
+            }
+        }
+    }
+}
+
 //checks for invaders
 int invadersLeft() {
     for (int i = 0; i < Rows; i++)
@@ -102,6 +168,11 @@ int main() {
         scanf("%d",&a);
 
         if(a == 1){
+            score = 0;
+            gameOver = 0;
+            playerPos = Colm/2;
+            invaderDirection = 1;
+            moveCounter = 0;
             initGrid();
             drawGrid();
 
@@ -114,14 +185,24 @@ int main() {
                 }
 
                 updateBullets();
+                updateInvaders();
                 drawGrid();
 
                 if (!invadersLeft()){
                     printf("\nYou WIN! Final Score: %d\n", score);
                     gameOver = 1;
                 }
+                for (int j = 0; j < Colm; j++) {
+                    if (grid[Rows - 2][j] == Invader) {
+                        printf("\nGame Over! Final Score: %d\n", score);
+                        gameOver = 1;
+                        break;
+                    }
+                }
+
             }
             continue;
+
         }
         else if(a == 2){
             printf("To play the game use:\n -A/D to move left or right\n -Spacebar to shoot\n\n");
@@ -141,5 +222,7 @@ int main() {
             continue;
         }
     }
+
     return 0;
 }
+
